@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "RAIN/RAINShader"
 {
 	SubShader
@@ -38,7 +40,7 @@ Shader "RAIN/RAINShader"
 			vert_out vert(appdata_base v)
 			{
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, v.vertex);
+				tOut.position = UnityObjectToClipPos(v.vertex);
 				
 				return tOut;
 			}
@@ -74,7 +76,7 @@ Shader "RAIN/RAINShader"
 			vert_out vert(appdata_base v)
 			{
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, v.vertex);
+				tOut.position = UnityObjectToClipPos(v.vertex);
 				
 				return tOut;
 			}
@@ -115,7 +117,7 @@ Shader "RAIN/RAINShader"
 										     0,   0, 0.8,   0,
 										     0,   0,   0,   1);
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, mul(tScale, v.vertex));
+				tOut.position = UnityObjectToClipPos(mul(tScale, v.vertex));
 				
 				return tOut;
 			}
@@ -154,7 +156,7 @@ Shader "RAIN/RAINShader"
 										     0,   0, 0.8,   0,
 										     0,   0,   0,   1);
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, mul(tScale, v.vertex));
+				tOut.position = UnityObjectToClipPos(mul(tScale, v.vertex));
 				
 				return tOut;
 			}
@@ -192,7 +194,7 @@ Shader "RAIN/RAINShader"
 			vert_out vert(appdata_base v)
 			{
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, v.vertex + float4(0, _height, 0, 0));
+				tOut.position = UnityObjectToClipPos(v.vertex + float4(0, _height, 0, 0));
 				tOut.texcoord = v.texcoord;
 				
 				return tOut;
@@ -232,7 +234,7 @@ Shader "RAIN/RAINShader"
 			vert_out vert(appdata_base v)
 			{
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, v.vertex + float4(0, _height, 0, 0));
+				tOut.position = UnityObjectToClipPos(v.vertex + float4(0, _height, 0, 0));
 				tOut.texcoord = v.texcoord;
 				
 				return tOut;
@@ -287,7 +289,7 @@ Shader "RAIN/RAINShader"
 													 0, 0, 0, 1);
 				
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, mul(tForwardRotation, mul(tTiltRotation, mul(tBackRotation, v.vertex))));
+				tOut.position = UnityObjectToClipPos(mul(tForwardRotation, mul(tTiltRotation, mul(tBackRotation, v.vertex))));
 				tOut.texcoord = v.texcoord;
 				
 				return tOut;
@@ -324,7 +326,7 @@ Shader "RAIN/RAINShader"
 			vert_out vert(appdata_base v)
 			{
 				vert_out tOut;
-				tOut.position = mul(UNITY_MATRIX_MVP, v.vertex);
+				tOut.position = UnityObjectToClipPos(v.vertex);
 				tOut.texcoord = v.texcoord;
 				
 				return tOut;
@@ -370,7 +372,7 @@ Shader "RAIN/RAINShader"
 			vert_out vert(appdata v)
 			{
 		 		vert_out tOut;
-		 		tOut.position = mul(UNITY_MATRIX_MVP, v.vertex);
+		 		tOut.position = UnityObjectToClipPos(v.vertex);
 		 		tOut.texcoord = v.texcoord;
 		 		tOut.color = v.color;
 		 		
